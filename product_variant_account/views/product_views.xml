@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2026 Nathan Jones
+     License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl). -->
+<odoo>
+
+    <!-- Product TEMPLATE form: on the Accounting tab, right under the
+         template-level income/expense accounts, show an editable list of this
+         product's variants so a per-variant account can be set without opening
+         each variant. Only shown when the product actually has >1 variant. -->
+    <record id="product_template_form_view_variant_account" model="ir.ui.view">
+        <field name="name">product.template.form.variant.account</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="account.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='invoicing']/group[@name='properties']" position="after">
+                <separator string="Variant-specific Accounts"
+                    invisible="product_variant_count &lt;= 1"
+                    groups="account.group_account_readonly"/>
+                <field name="product_variant_ids" nolabel="1"
+                    invisible="product_variant_count &lt;= 1"
+                    groups="account.group_account_readonly">
+                    <list editable="bottom" create="false" delete="false">
+                        <field name="display_name" string="Variant" readonly="1"/>
+                        <field name="product_template_variant_value_ids"
+                            string="Attributes" widget="many2many_tags"
+                            readonly="1" optional="show"/>
+                        <field name="default_code" string="Reference"
+                            readonly="1" optional="hide"/>
+                        <field name="variant_income_account_id"/>
+                        <field name="variant_expense_account_id"/>
+                    </list>
+                </field>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Individual VARIANT form (reached via the Variants smart button): expose
+         the same override fields next to the (delegated) template accounts. -->
+    <record id="product_normal_form_view_variant_account" model="ir.ui.view">
+        <field name="name">product.product.form.variant.account</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <field name="property_account_income_id" position="after">
+                <field name="variant_income_account_id"
+                    groups="account.group_account_readonly"/>
+            </field>
+            <field name="property_account_expense_id" position="after">
+                <field name="variant_expense_account_id"
+                    groups="account.group_account_readonly"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>

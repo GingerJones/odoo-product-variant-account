@@ -1,0 +1,71 @@
+<section class="oe_container">
+  <div class="oe_row oe_spaced">
+    <div class="oe_span12">
+      <h2 class="oe_slogan">Product Variant Income &amp; Expense Accounts</h2>
+      <h3 class="oe_slogan">Post different variants of the same product to different accounts</h3>
+    </div>
+    <div class="oe_span12">
+      <p class="oe_mt32">
+        Odoo lets you set an income and expense account on the product
+        <b>template</b> and the product <b>category</b> &mdash; but every
+        variant of a template is forced to share those same accounts. This
+        module adds a per-<b>variant</b> income/expense account override.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="oe_container oe_dark">
+  <div class="oe_row oe_spaced">
+    <div class="oe_span6">
+      <h3 class="oe_slogan">What it does</h3>
+      <ul>
+        <li>Adds an <b>Income Account</b> and <b>Expense Account</b> to every product variant.</li>
+        <li>Editable straight from the product's <b>Accounting</b> tab, as a per-variant list.</li>
+        <li>Applied on customer invoices, vendor bills and Point of Sale.</li>
+        <li>Fiscal-position account mapping is preserved.</li>
+      </ul>
+    </div>
+    <div class="oe_span6">
+      <h3 class="oe_slogan">Safe fallback</h3>
+      <p>
+        Leave a variant's override empty and Odoo falls back to the usual
+        template / category account. Nothing changes on an existing database
+        until you opt in, variant by variant.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="oe_container">
+  <div class="oe_row oe_spaced">
+    <div class="oe_span12">
+      <h3 class="oe_slogan">Requirement: real product variants</h3>
+      <p class="oe_mt32">
+        The per-variant accounts apply to products that have <b>actual variant
+        records</b>. A product only has separate variants when its attribute's
+        <b>Variants Creation</b> mode is set to <b>Instantly</b>
+        (<i>Inventory &rarr; Configuration &rarr; Attributes</i>).
+      </p>
+      <p>
+        If an attribute is set to <b>Never (option)</b> the product stays a
+        single variant, so there is nothing per-variant to configure and the
+        <b>Variant-specific Accounts</b> list does not appear &mdash; the
+        standard template/category account is used instead.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="oe_container oe_dark">
+  <div class="oe_row oe_spaced">
+    <div class="oe_span12">
+      <h3 class="oe_slogan">How to use</h3>
+      <ol>
+        <li>Open a product with more than one variant.</li>
+        <li>Go to the <b>Accounting</b> tab.</li>
+        <li>In <b>Variant-specific Accounts</b>, set the account(s) for the variants that need them.</li>
+      </ol>
+    </div>
+  </div>
+</section>
