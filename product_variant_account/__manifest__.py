@@ -12,7 +12,11 @@
     "category": "Accounting/Accounting",
     "depends": ["account"],
     "data": ["views/product_views.xml"],
-    "images": ["static/description/banner.png"],
+    "images": [
+        "static/description/banner.png",
+        "static/description/variant_accounts_tab.png",
+        "static/description/attributes_variants_tab.png",
+    ],
     "development_status": "Production/Stable",
     "installable": True,
     "application": True,
